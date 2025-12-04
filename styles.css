@@ -4640,6 +4640,7 @@ footer {
   /* 1. Ajuste Global de Container */
   .container {
     padding: 0 15px;
+    width: auto;
     /* Ganar 10px de ancho total para contenido */
   }
 
@@ -5423,4 +5424,5 @@ footer {
   border-radius: 10px;
   background: #f8f9fa;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
 }

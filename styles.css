@@ -441,6 +441,10 @@ footer {
     box-shadow: none;
     border-top: none;
   }
+
+  .content {
+    padding: 0;
+  }
 }
 
 /* --- ESTILOS ADICIONALES PARA PÁGINAS INTERNAS --- */
@@ -5425,4 +5429,7 @@ footer {
   background: #f8f9fa;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
+}
+.text {
+  white-space: normal;
 }

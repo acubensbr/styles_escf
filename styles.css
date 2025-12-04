@@ -39,6 +39,7 @@ ul {
 
 .container {
   max-width: 1200px;
+  width: auto;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -440,10 +441,6 @@ footer {
     width: 100%;
     box-shadow: none;
     border-top: none;
-  }
-
-  .content {
-    padding: 0;
   }
 }
 
@@ -5428,8 +5425,14 @@ footer {
   border-radius: 10px;
   background: #f8f9fa;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-
 }
-.text {
-  white-space: normal;
+
+/* --- ESTILOS TITULOS Y SUBTITULOS --- */
+/*nosotros.html*/
+.page-title {
+  font-size: 2rem;
+}
+
+.lead {
+  font-size: 1rem;
 }

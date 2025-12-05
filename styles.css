@@ -5429,10 +5429,46 @@ footer {
 
 /* --- ESTILOS TITULOS Y SUBTITULOS --- */
 /*nosotros.html*/
-.page-title {
+/* .page-title {
   font-size: 2rem;
 }
 
 .lead {
+  font-size: 1rem;
+} */
+
+/* --- TYPOGRAPHY ROBUSTNESS (REM) --- */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+small,
+.small {
+  font-size: 0.875rem;
+}
+
+p,
+li,
+a {
   font-size: 1rem;
 }

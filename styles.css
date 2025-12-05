@@ -309,6 +309,11 @@ ul {
   gap: 30px;
 }
 
+/* Corrección PUNTUAL para los h4 dentro de la sección de perfiles (Actitudes/Aptitudes) */
+.services-grid h4 {
+  font-size: 1.5rem; /* Tamaño fijo para contrarrestar el body */
+}
+
 .service-card {
   background: var(--white);
   padding: 30px;
@@ -2600,6 +2605,10 @@ footer {
   justify-content: center !important;
 }
 
+.justify-content-space-evenly {
+  justify-content: space-evenly !important;
+}
+
 .align-items-center {
   align-items: center !important;
 }
@@ -3790,6 +3799,31 @@ footer {
   .person-card {
     padding: 20px;
   }
+}
+
+/* --- ESTILOS PARA PESTAÑAS (TAB-LINK) EN DESKTOP --- */
+
+.tab-link {
+  background: none;       /* Quitamos el fondo gris de botón por defecto */
+  border: none;           /* Quitamos el borde de botón */
+  padding: 10px 20px;     /* Espaciado interno cómodo */
+  font-size: 1rem;        /* IMPORTANTE: Fijamos 1rem para evitar herencia del body */
+  font-weight: 600;       /* Texto semi-negrita */
+  color: #666;            /* Gris suave para estado inactivo */
+  cursor: pointer;
+  border-bottom: 3px solid transparent; /* Línea invisible lista para activarse */
+  transition: all 0.3s ease;
+  margin-bottom: -2px;    /* Truco visual: baja la pestaña para pisar la línea del contenedor */
+}
+
+.tab-link:hover {
+  color: var(--primary-color); /* Azul al pasar el mouse */
+}
+
+/* Estado Activo (Cuando Alpine pone la clase .active) */
+.tab-link.active {
+  color: var(--primary-color);          /* Texto Azul */
+  border-bottom: 3px solid var(--accent-color); /* Línea dorada abajo */
 }
 
 /* --- MEJORAS MÓVIL ACADÉMICO (Agregado) --- */

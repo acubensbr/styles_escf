@@ -1679,6 +1679,7 @@ footer {
   border-bottom: 2px solid #eee;
   font-size: 1.2rem;
   font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .committees-grid-2col {
@@ -4053,6 +4054,8 @@ footer {
   position: relative;
   padding-left: 30px;
   margin-bottom: 10px;
+  /* AGREGADO: Esto evita que herede el .8vw del body */
+  font-size: 0.9rem;
 }
 
 .check-list li i {
@@ -5428,47 +5431,63 @@ footer {
 }
 
 /* --- ESTILOS TITULOS Y SUBTITULOS --- */
-/*nosotros.html*/
-/* .page-title {
-  font-size: 2rem;
-}
-
-.lead {
-  font-size: 1rem;
-} */
-
-/* --- TYPOGRAPHY ROBUSTNESS (REM) --- */
-h1 {
+/* nosotros.html*/ */
+.page-title {
   font-size: 2.5rem;
 }
 
-h2 {
-  font-size: 2rem;
+.lead {
+  font-size: 1.2rem;
 }
 
-h3 {
-  font-size: 1.75rem;
+/* --- ESTILOS FALTANTES PARA CAMPO LABORAL (WORK CARD) --- */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
-h4 {
+.work-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Mismo radio que .service-card */
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-5px); /* Mismo efecto hover que tus otras cards */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-color);
+}
+
+.work-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.work-header i {
   font-size: 1.5rem;
+  color: var(--accent-color); /* Usamos el dorado de tu paleta */
 }
 
-h5 {
-  font-size: 1.25rem;
+.work-header h3 {
+  font-size: 1.1rem; /* Mismo tamaño que .staff-info h3 */
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
 }
 
-h6 {
-  font-size: 1rem;
-}
-
-small,
-.small {
-  font-size: 0.875rem;
-}
-
-p,
-li,
-a {
-  font-size: 1rem;
+/* AQUÍ ESTÁ EL CAMBIO DE TAMAÑO QUE NECESITAS */
+.work-list li {
+  font-size: 0.9rem; /* 0.9rem para igualar a .c-members y .lab-features */
+  color: #555;
+  margin-bottom: 8px;
+  list-style-type: disc; /* Agrega viñeta básica */
+  margin-left: 20px; /* Espacio para la viñeta */
 }

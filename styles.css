@@ -5610,3 +5610,232 @@ footer {
   margin-bottom: 5px;
   line-height: normal;
 }
+
+/* --- ESTILOS NUEVOS PARA ACORDEÓN DE PLANES (MALLA) --- */
+
+/* Cabecera tipo tabla (Solo visible en desktop) */
+.plans-header-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Ocultar cabecera en móvil */
+@media (max-width: 768px) {
+  .plans-header-row { display: none; }
+}
+
+/* Contenedor de cada Plan */
+.plan-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: none; /* Para que se unan visualmente con la cabecera */
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* Primera tarjeta bordes superiores corregidos si no hay header */
+.plan-card:first-of-type {
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Botón disparador del acordeón */
+.plan-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: left;
+}
+
+.plan-toggle:hover {
+  background-color: #f9f9f9;
+}
+
+.plan-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* El círculo azul con F-1, F-2 */
+.plan-badge {
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary-color); /* Azul Navy */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.plan-titles h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+.plan-year {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Cuerpo del acordeón (Documentos) */
+.plan-body {
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+  padding: 15px 20px;
+}
+
+/* Item de Documento individual */
+.plan-doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.plan-doc-item:last-child {
+  margin-bottom: 0;
+}
+
+.doc-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.doc-info i {
+  margin-top: 3px; /* Alinear icono con texto */
+}
+
+/* Botones de acción */
+.doc-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón Ojo (Ver) */
+.btn-icon-action {
+  color: #666;
+  font-size: 1.1rem;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.btn-icon-action:hover {
+  color: var(--primary-color);
+}
+
+/* Botón Descarga (Dorado cuadrado como en la imagen) */
+.btn-box-action {
+  background-color: var(--accent-color); /* Dorado */
+  color: var(--primary-color); /* Icono oscuro */
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.btn-box-action:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* --- TARJETA DE EQUIVALENCIA --- */
+.equivalence-card {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  box-shadow: 0 5px 15px rgba(0,33,71,0.2);
+}
+
+.eq-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.eq-icon {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.eq-text h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.eq-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.eq-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsive para la tarjeta de planes */
+@media (max-width: 768px) {
+  .plan-doc-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .doc-actions {
+    width: 100%;
+    justify-content: flex-end;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+  }
+
+  .equivalence-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .eq-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

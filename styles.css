@@ -4977,7 +4977,7 @@ footer {
   }
 
   .card.bg-light i.fa-4x {
-    font-size: 3em;
+    font-size: 3rem !important;
     /* Reducir un poco el icono gigante */
     margin-bottom: 15px !important;
   }
@@ -5765,6 +5765,8 @@ footer {
   justify-content: center;
   border-radius: 4px;
   transition: opacity 0.2s;
+  /*ESTA LÍNEA PARA QUE EL ICONO NO SE ENCOJA */
+  font-size: 1rem;
 }
 
 .btn-box-action:hover {
@@ -5838,4 +5840,61 @@ footer {
     flex-direction: column;
     gap: 10px;
   }
+}
+
+/* --- BOTONES PARA FONDOS OSCUROS (Faltantes) --- */
+
+/* Botón Blanco Sólido */
+.btn-light {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 1px solid var(--white);
+}
+
+.btn-light:hover {
+  background-color: #e6e6e6; /* Un poco más gris al pasar el mouse */
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Botón Borde Blanco (Outline) */
+.btn-outline-light {
+  background-color: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+/* --- BLINDAJE DE ICONOS FONTAWESOME (CAMBIO A REM) --- */
+/* Esto obliga a todos los íconos a usar el tamaño raíz (16px) 
+   y no el tamaño variable del body (.8vw) */
+
+/* 1. Tamaños Estándar de FontAwesome pasados a REM */
+.fa-xs { font-size: 0.75rem; }
+.fa-sm { font-size: 0.875rem; }
+.fa-lg { font-size: 1.33rem; }
+.fa-2x { font-size: 2rem; }  /* ~32px */
+.fa-3x { font-size: 3rem; }  /* ~48px */
+.fa-4x { font-size: 4rem; }  /* ~64px */
+.fa-5x { font-size: 5rem; }  /* ~80px */
+.fa-6x { font-size: 6rem; }
+.fa-7x { font-size: 7rem; }
+.fa-8x { font-size: 8rem; }
+.fa-9x { font-size: 9rem; }
+.fa-10x { font-size: 10rem; }
+
+.card.bg-light i.fa-4x {
+  font-size: 3rem !important; /* Forzamos 3rem (48px) fijo */
+  margin-bottom: 15px !important;
+}
+
+/* ESTA ES LA QUE ARREGLA TU PROBLEMA ESPECÍFICO */
+.h6 { 
+  font-size: 1rem !important; /* 16px fijos */
+  font-weight: 700;           /* Asegura que se vea negrita como un título */
+  line-height: 1.4;
 }

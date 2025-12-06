@@ -2107,6 +2107,8 @@ footer {
   border-radius: 8px;
   border-left: 3px solid #eee;
   transition: 0.2s;
+  /* AGREGAR ESTA LÍNEA PARA CORREGIR EL TAMAÑO */
+  font-size: 1rem;
 }
 
 .topic-list li:hover {
@@ -5551,4 +5553,60 @@ footer {
   font-size: 2.2rem; /* Mismo tamaño que .section-header h2 */
   font-weight: 700;  /* Opcional: para asegurar grosor */
   /* color: var(--primary-color); Opcional: asegurar color base */
+}
+
+/* Corrección para títulos dentro de las tarjetas de normativa */
+.doc-body h3, 
+.doc-body .h5 {
+  font-size: 1.1rem; /* Tamaño fijo y legible */
+  line-height: 1.3;
+}
+
+/* Corrección para la sección de información de proyectos */
+.projects-info h3 {
+  font-size: 1.5rem; /* Tamaño título H3 */
+}
+
+.projects-info p {
+  font-size: 1rem;   /* Tamaño párrafo estándar */
+  margin-bottom: 15px;
+}
+
+/* Corrección para párrafos normales dentro de tarjetas de repositorio */
+.repo-body p:not(.small) {
+  font-size: 1rem;
+  line-height: 1.5;
+  /* color: #555; */
+  margin-bottom: 15px;
+}
+
+/* --- CORRECCIÓN DE ALINEACIÓN DE BOTONES REPOSITORIO --- */
+
+/* 1. Asegurar que la tarjeta sea un contenedor flexible vertical */
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa todo el alto de la celda del grid */
+}
+
+/* 2. El cuerpo debe crecer para ocupar el espacio vacío */
+.repo-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Esto es la clave: llena el espacio disponible */
+  padding: 25px;
+}
+
+/* 3. Clase de utilidad para empujar el botón al fondo */
+/* Si ya tienes .mt-auto en otro lado, asegúrate que tenga !important */
+.mt-auto {
+  margin-top: auto !important;
+  width: 100%; /* Asegura que el contenedor del botón ocupe todo el ancho */
+}
+
+/* Opcional: Ajuste para el texto pequeño del 3er card para que se vea mejor */
+.repo-body .text-center small {
+  display: block;
+  margin-bottom: 5px;
+  line-height: normal;
 }

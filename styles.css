@@ -5941,3 +5941,48 @@ input, select, textarea, button {
     h1, .page-title { font-size: 1.8rem !important; }
     h2, .section-title { font-size: 1.5rem !important; }
 }
+
+/* --- SISTEMA DE GRILLA (GRID SYSTEM) --- */
+
+/* 1. Contenedor de Fila (Flexbox) */
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* 2. Configuración Base para Columnas (Móvil Primero) */
+/* Esto hace que en celular SIEMPRE ocupen el 100% por defecto */
+[class*="col-"] {
+  width: 100%; 
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+
+/* 3. Configuración para PC/Tablets (Pantallas mayores a 768px) */
+@media (min-width: 768px) {
+  /* Aquí es donde ocurre la magia para la PC */
+  
+  /* El bloque principal toma el 66.6% (8 de 12 columnas) */
+  .col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+
+  /* La tarjeta de pago toma el 33.3% (4 de 12 columnas) */
+  .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+/* 4. Ajuste estético para Móvil */
+@media (max-width: 767px) {
+  /* Añadimos margen arriba a la tarjeta de pago solo en celular 
+     para que no quede pegada al texto de arriba */
+  .payment-card {
+    margin-top: 20px; 
+  }
+}

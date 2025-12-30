@@ -5898,3 +5898,46 @@ footer {
   font-weight: 700;           /* Asegura que se vea negrita como un título */
   line-height: 1.4;
 }
+
+/* --- 99. BLINDAJE DE TIPOGRAFÍA Y LEGIBILIDAD --- */
+
+/* 1. Asegurar que el contenido de lectura ignore el .8vw del body y use tamaño estándar */
+.content-area p,
+.content-area li,
+.content-area span:not([class]), /* Spans sin clase */
+.content-area div:not([class]),  /* Divs sin clase con texto suelto */
+.tab-panel,
+.accordion-body {
+    font-size: 1rem !important; /* Fuerza 16px (o lo que tenga el navegador por defecto) */
+    line-height: 1.6;
+}
+
+/* 2. Asegurar que los inputs y tablas sean legibles */
+input, select, textarea, button {
+    font-size: 1rem !important;
+}
+
+/* 3. Corrección específica para tus listas de requisitos (.check-list) */
+.check-list li {
+    font-size: 1rem !important; /* Sobrescribir herencia pequeña */
+    margin-bottom: 0.8rem;
+}
+
+/* 4. Títulos de secciones dentro de pestañas (h4, h6) */
+.content-area h4, 
+.content-area h6 {
+    font-size: 1.1rem !important; /* Un poco más grande que el texto base */
+    font-weight: 700;
+}
+
+/* 5. PROTECCIÓN PARA MÓVILES (CRÍTICO) */
+/* En móviles, .8vw es microscópico (aprox 3px). Esto lo arregla */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px !important; /* Restaurar tamaño base en móvil */
+    }
+    
+    /* Ajuste para que los títulos no sean gigantes en móvil si usas rem */
+    h1, .page-title { font-size: 1.8rem !important; }
+    h2, .section-title { font-size: 1.5rem !important; }
+}

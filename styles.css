@@ -1387,7 +1387,7 @@ footer {
 
 /* Mejorar el separador entre Presentación y Misión */
 .divider-styled {
-  margin: 80px 0;
+  margin: 30px 0;
   /* Más espacio en el divisor de línea */
   opacity: 0.1;
 }
@@ -6439,4 +6439,181 @@ input, select, textarea, button {
   font-weight: bold;
   font-size: 1.2rem;
   line-height: 0.8;
+}
+
+/* --- ECOSISTEMA DIGITAL --- */
+
+/* Tarjeta de Estadísticas (eLibro) */
+.eco-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid var(--accent-color); /* Borde dorado institucional */
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.eco-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* Items de la lista con línea punteada */
+.eco-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e0e0e0; /* Separador sutil */
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.eco-list-item:last-child {
+  border-bottom: none;
+}
+
+/* Badge personalizado (Pill) */
+.badge-count {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 50rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Tarjeta de Acción (Biblioteca Virtual) */
+.eco-cta {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #003366 100%); /* Gradiente azul */
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.eco-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 33, 71, 0.3);
+}
+
+/* Círculo decorativo de fondo (opcional, para dar textura) */
+.eco-cta::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+/* --- UTILIDADES RESPONSIVAS PARA BOTONES --- */
+@media (min-width: 768px) {
+  .w-md-auto {
+    width: auto !important;
+  }
+}
+/* Asegura que en móvil ocupe todo */
+.w-100 {
+  width: 100% !important;
+}
+
+/* --- BOTÓN DE ACCIÓN RESPONSIVO (Sin !important) --- */
+
+/* 1. Comportamiento base (Móviles): Ocupa todo el ancho */
+.btn-cta-responsive {
+  display: block;      /* Se comporta como bloque */
+  width: 100%;         /* Llena el contenedor */
+  text-align: center;  /* Texto centrado */
+  border-radius: 50px; /* Bordes redondos */
+}
+
+/* 2. Comportamiento escritorio (Desde tablets/PC): Vuelve a su tamaño natural */
+@media (min-width: 768px) {
+  .btn-cta-responsive {
+    display: inline-block; /* Se comporta como botón normal */
+    width: auto;           /* Ancho según el contenido */
+    padding-left: 2rem;    /* Espaciado lateral elegante */
+    padding-right: 2rem;
+    margin-top: 0;
+  }
+}
+
+/* --- SECCIÓN TARIFAS --- */
+
+.tariff-card {
+  background: #fff;
+  border: none;
+  border-top: 6px solid var(--accent-color); /* Borde superior dorado */
+  border-radius: 8px; /* Solo bordes redondeados abajo */
+  box-shadow: 0 10px 30px rgba(0, 33, 71, 0.08); /* Sombra suave */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icono de fondo decorativo (Marca de agua) */
+.tariff-bg-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 15rem;
+  color: rgba(0, 33, 71, 0.03); /* Muy sutil */
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+/* Lista de items del PDF */
+.list-tariff {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.list-tariff li {
+  background: #f8f9fa;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  color: #555;
+  border: 1px solid #e9ecef;
+}
+
+.list-tariff li i {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+
+/* --- UTILIDADES DE ESPACIADO Y TAMAÑO --- */
+
+/* Margen vertical (Arriba y Abajo) - Equivalente a my-4 */
+.my-4 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Ancho al 50% - Equivalente a w-50 */
+.w-50 {
+  width: 50% !important;
+}
+
+/* Centrado horizontal - Equivalente a mx-auto */
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* RESPONSIVE: En móviles el ancho debe ser mayor para que no se vea aplastado */
+@media (max-width: 768px) {
+  .w-50 {
+    width: 90% !important; /* En celular ocupa casi todo el ancho */
+  }
 }

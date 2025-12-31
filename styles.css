@@ -6260,3 +6260,183 @@ input, select, textarea, button {
 .g20 {
   gap: 20px;
 }
+
+/* --- TARJETAS DE SERVICIOS CÓMPUTO (Soporte y Alquiler) --- */
+
+/* Tarjeta Izquierda (Soporte) */
+.support-card {
+  background-color: var(--primary-color); /* Azul Navy Institucional */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.support-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 33, 71, 0.2); /* Sombra azulada */
+}
+
+/* El icono grande */
+.support-icon {
+  color: var(--accent-color); /* Dorado */
+  opacity: 0.9;
+}
+
+/* Tarjeta Derecha (Alquiler) */
+.rental-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid var(--accent-color); /* Borde lateral DORADO */
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rental-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-color); /* Borde completo cambia a dorado sutil */
+}
+
+/* Botón compacto para la tarjeta de alquiler */
+.btn-rental {
+  white-space: nowrap; /* Evita que el texto del botón se rompa */
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+/* --- ESTILOS MEJORADOS: CENTROS DE CÓMPUTO --- */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive automático */
+  gap: 30px; /* Mejor separación entre tarjetas */
+  margin-bottom: 3rem;
+}
+
+.tech-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; /* Bordes más suaves */
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 33, 71, 0.15); /* Sombra azulada institucional */
+  border-color: var(--accent-color); /* Borde dorado al pasar el mouse */
+}
+
+/* Imagen con Zoom suave */
+.tech-img {
+  height: 200px; /* Altura fija para uniformidad */
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tech-card:hover .tech-img img {
+  transform: scale(1.1);
+}
+
+/* Etiqueta flotante (Badge) */
+.tech-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--primary-color);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Variante Dorada para Alto Rendimiento */
+.tech-badge.premium {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.tech-body {
+  padding: 25px; /* Buen espaciado interno */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tech-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--accent-color); /* Detalle de marca */
+  padding-left: 10px;
+}
+
+/* Filas de especificaciones técnicas (Specs) */
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  border-bottom: 1px dashed #eee; /* Línea guía sutil */
+  padding-bottom: 8px;
+}
+
+.spec-row i {
+  color: var(--primary-color);
+  width: 25px;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.spec-val {
+  font-weight: 700;
+  color: #333;
+  background: #f8f9fa;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Lista de características adicionales */
+.tech-features {
+  margin-top: auto; /* Empuja al fondo */
+  padding-top: 15px;
+  list-style: none;
+}
+
+.tech-features li {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tech-features li::before {
+  content: "•";
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 0.8;
+}

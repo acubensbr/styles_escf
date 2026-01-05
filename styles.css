@@ -4199,7 +4199,7 @@ footer {
 
 /* 5. Plan Selector */
 .plan-selector .btn-group {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   border-radius: 5px;
   overflow: hidden;
 }
@@ -4950,6 +4950,10 @@ footer {
     padding: 15px;
     /* Botones más fáciles de tocar */
   }
+}
+
+.card.bg-light.p-5 {
+    padding: 30px;
 }
 
 /* --- REFINAMIENTO ESPACIADO REGLAMENTOS (MÓVIL) --- */
@@ -6616,4 +6620,466 @@ input, select, textarea, button {
   .w-50 {
     width: 90% !important; /* En celular ocupa casi todo el ancho */
   }
+}
+
+/* --- ESTILOS DEL CARRUSEL (ALPINE JS) --- */
+
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Misma altura que tu hero anterior */
+    min-height: 500px;
+    overflow: hidden;
+    background-color: var(--primary-color);
+}
+
+.carousel-slides-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    inset: 0; /* top:0, right:0, bottom:0, left:0 */
+    width: 100%;
+    height: 100%;
+}
+
+/* Transiciones de opacidad (Alpine x-transition) */
+.fade-enter-active, .fade-leave-active { transition: opacity 1s ease; }
+.fade-enter-start, .fade-leave-end { opacity: 0; }
+.fade-enter-end, .fade-leave-start { opacity: 1; }
+
+.slide-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay oscuro degradado */
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 33, 71, 0.9) 10%, rgba(0, 33, 71, 0.4) 60%, transparent 100%);
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: center;
+}
+
+.slide-content {
+    text-align: center;
+    color: var(--white);
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    margin-top: 100px; /* Empujar un poco hacia abajo */
+}
+
+.slide-content h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Botones de Navegación (Flechas) */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-nav.prev { left: 20px; }
+.carousel-nav.next { right: 20px; }
+
+/* Indicadores (Puntos abajo) */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 20;
+}
+
+.indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+}
+
+.indicator-dot.active {
+    background: var(--white);
+    transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-carousel { height: 60vh; }
+    .slide-content h2 { font-size: 2rem; }
+    .slide-content p { font-size: 1rem; }
+    .carousel-nav { width: 40px; height: 40px; }
+}
+
+/* --- ESTILOS DEL MODAL (VISOR HÍBRIDO: PDF vs IMAGEN) --- */
+
+/* 1. Fondo Oscuro (Overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Oscuro y semitransparente */
+    backdrop-filter: blur(4px); /* Efecto borroso elegante */
+    z-index: 9999; /* Siempre encima de todo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Margen de seguridad en móviles */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Estado visible (se usa con AlpineJS) */
+.modal-overlay.active {
+    opacity: 1;
+}
+
+/* 2. El Panel Base (Contenedor blanco) */
+/* NOTA: Ya no tiene tamaño fijo por defecto, depende del modo */
+.modal-panel {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease, width 0.3s, height 0.3s, max-width 0.3s; /* Animación fluida al cambiar de tamaño */
+    min-width: 320px; /* Evita que la cabecera se rompa si la imagen es diminuta */
+}
+
+/* Estado activo del panel */
+.modal-overlay.active .modal-panel {
+    transform: scale(1);
+}
+
+/* --- MODOS DE VISUALIZACIÓN --- */
+
+/* MODO A: PDF (Tamaño fijo y grande para lectura) */
+.modal-panel.mode-pdf {
+    width: 100%;
+    max-width: 1400px;
+    height: 90vh;
+}
+
+/* MODO B: IMAGEN (Tamaño automático según el contenido) */
+.modal-panel.mode-img {
+    width: auto;      /* Se adapta al ancho de la foto */
+    height: auto;     /* Se adapta al alto de la foto */
+    max-width: 95vw;  /* Límite: no salirse de la pantalla horizontalmente */
+    max-height: 90vh; /* Límite: no salirse de la pantalla verticalmente */
+}
+
+/* 3. Cabecera */
+.modal-header {
+    flex-shrink: 0; /* Asegura que la cabecera nunca se aplaste */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.btn-close-modal:hover {
+    color: #dc3545;
+}
+
+/* 4. Cuerpo del Modal (Adaptable) */
+
+/* Cuerpo para MODO PDF (Gris, ocupa todo el espacio) */
+.modal-panel.mode-pdf .modal-body {
+    flex: 1; 
+    background-color: #525659;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cuerpo para MODO IMAGEN (Negro, centrado, tamaño ajustado) */
+.modal-panel.mode-img .modal-body {
+    flex: 0 1 auto; /* Importante: No obligar a crecer más de lo necesario */
+    background-color: #000; /* Fondo negro para resaltar fotos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* La imagen dicta el tamaño */
+    padding: 0;
+}
+
+/* 5. Elementos Internos */
+
+/* Iframe del PDF */
+.doc-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Imagen (Zoom Inteligente) */
+.doc-image {
+    display: block;
+    width: auto;
+    height: auto;
+    /* Reglas de límite: */
+    max-width: 100%;  /* Nunca más ancho que el contenedor */
+    /* Calculamos: 90vh (modal) - aprox 60px (cabecera) = espacio disponible */
+    max-height: 80vh; 
+    object-fit: contain;
+}
+
+/* Ajuste Móvil */
+@media (max-width: 768px) {
+    .modal-panel.mode-pdf,
+    .modal-panel.mode-img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+
+    .doc-image {
+        max-height: 85vh; /* Ajuste para móvil */
+        width: 100%; /* En móvil sí permitimos que toque los bordes laterales */
+    }
+}
+
+/* Estilo para el Botón de Pausa/Play del Carrusel */
+.carousel-pause-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px; /* Esquina inferior derecha */
+    z-index: 25;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    backdrop-filter: blur(2px);
+}
+
+.carousel-pause-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Ajuste móvil para que no estorbe */
+@media (max-width: 768px) {
+    .carousel-pause-btn {
+        bottom: 20px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* =========================================================
+   AJUSTES TIPOGRÁFICOS (Corrección de Bundle / Trámites)
+   ========================================================= */
+
+/* 1. Restaurar el texto base en los contenedores principales */
+/* Esto anula el efecto del .8vw del body en todo el contenido */
+.content-area, 
+.section-padding, 
+.container {
+    font-size: 1rem; /* Aproximadamente 16px */
+}
+
+/* 2. Tarjetas de Servicios (La cuadrícula de trámites) */
+.service-card p, 
+.service-card a {
+    font-size: 1rem;
+}
+
+.service-card h3 {
+    font-size: 1.3rem; /* Títulos de tarjeta visibles */
+}
+
+/* 3. Menú Lateral (Si usas la barra lateral en trámites) */
+.sidebar-nav .v-tab-btn {
+    font-size: 0.95rem; /* Tamaño cómodo para botones de menú */
+}
+
+.sidebar-nav .menu-label {
+    font-size: 0.85rem;
+}
+
+/* 4. Listas de Requisitos y Contenido de Tarjetas */
+.check-list li, 
+.requirements-list li,
+.card-body p,
+.card-body li {
+    font-size: 1rem;
+    line-height: 1.6; /* Mejor lectura */
+}
+
+/* 5. Restauración de Jerarquía de Títulos */
+/* Importante para que los encabezados no se vean diminutos */
+.section-padding h1, .content-area h1 { font-size: 2.5rem; }
+.section-padding h2, .content-area h2 { font-size: 2rem; }
+.section-padding h3, .content-area h3 { font-size: 1.75rem; }
+.section-padding h4, .content-area h4 { font-size: 1.5rem; }
+.section-padding h5, .content-area h5 { font-size: 1.25rem; }
+
+/* 6. Elementos de Interacción (Formularios y Botones) */
+input, 
+select, 
+textarea, 
+button, 
+.btn {
+    font-size: 1rem; /* Para que al escribir no se vea hormiga */
+}
+
+/* 7. Tablas (Costos y Convalidaciones) */
+.table th {
+    font-size: 1rem;
+}
+.table td {
+    font-size: 0.95rem;
+}
+
+/* --- ESTILOS FAQ / ACORDEÓN INSTITUCIONAL --- */
+
+/* Contenedor de la pregunta */
+.accordion-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Botón disparador (La pregunta) */
+.accordion-trigger {
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    border: none;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.accordion-trigger:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estado activo (Pregunta abierta) */
+.accordion-trigger.active {
+    background-color: #f0f4f8; /* Azul muy suave */
+    color: var(--secondary-color);
+}
+
+/* Icono de flecha */
+.accordion-trigger .chevron-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.accordion-trigger.active .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--accent-color);
+}
+
+/* Contenido de la respuesta */
+.accordion-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Input del buscador específico para FAQ */
+.search-box input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+
+.search-box.flex-inline {
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+  display: inline-flex;
 }
